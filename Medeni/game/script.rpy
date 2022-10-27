@@ -1,10 +1,11 @@
 ﻿image black = "#000"
 
-define angga = Character("Angga")
-define atma = Character("Atma")
-define loka = Character("Loka")
+define angga = Character("Angga", color="#ff0000")
+define atma = Character("Atma", color="#0000ff")
+define loka = Character("Loka", color="00ff00")
 
 default A1 = False
+default B1 = False
 
 # The game starts here.
 
@@ -30,11 +31,11 @@ label start:
     scene bg home
     
     show atma
-    atma "Udah? Ayok berangkat."
+    atma "Udah? Ayo berangkat!"
     hide atma
     
     show angga
-    angga "Ayok. Kenapa gak nunggu di depan?"
+    angga "Ayo! Kenapa gak nunggu di depan?"
     hide angga
 
     show atma
@@ -114,7 +115,7 @@ label A1:
 
     show loka shock
     loka "Yang bener aja lu! Ogah."
-    loka "Lu gak risih ya di marahin mulu."
+    loka "Lu gak risih ya dimarahin mulu?"
     hide loka
 
     show angga
@@ -148,9 +149,27 @@ label A2:
     jump sekolah
 
 label sekolah:
+    with fade
+
+    show angga
+    show loka at right
+    show atma at left
+    "..."
+
+    scene black
+    with fade
+
     scene bg school
     with fade
-    
+
+    show angga
+    show loka at right
+    show atma at left
+    "..."
+    hide angga
+    hide loka
+    hide atma
+
     show atma
     atma "Angga sini bentar!"
     hide atma
@@ -159,8 +178,86 @@ label sekolah:
     show loka at right
     angga "Lu duluan aja, Lok. Gw mau ke toilet dulu."
     loka "Ok. Gw ingetin lagi. Jangan kabur lu!"
-    angga "Iya iya."
+    angga "Hmm."
     hide angga
     hide loka
+
+    scene bg toilet
+    with fade
+    
+    if A1:
+        show atma angry
+        atma "Ngapain lu ngajak si Loka?!"
+        hide atma
+
+        show angga
+        angga "Biar tenang kalo bolosnya rame-rame."
+        hide angga
+
+        show atma angry
+        atma "Lu kan tau dia si paling rajin. Pasti gak mau. "
+        atma "Dia jadi tau dong kita mau bolos."
+        hide atma
+
+        show angga
+        angga "Hmm. Jadi mau lu gimana?"
+        hide angga
+
+    else:
+        show atma angry
+        atma "Ngapain lu dengerin saran si Loka?!"
+        hide atma
+
+        show angga
+        angga "Apa salahnya? Dia mau bantu."
+        hide angga
+
+        show atma angry
+        atma "Emang gua gak bantuin lu? Gua temenin lu bolos tau!"
+        hide atma
+
+        show angga
+        angga "Hmm. Jadi mau lu gimana?"
+        hide angga
+    
+    show atma
+    atma "Ya lu dengerin gua dong."
+    atma "Lu tanya ke gua. Gua bisa kasih saran ke lu."
+    atma "Gak kaya Loka & guru biologi yang sering kasih tau lu, habis itu ninggalin lu. Gua bakal tetep temenin lu. Apapun masalahnya. Di mana pun."
+
+menu:
+    "Selalu dengarkan saran Atma":
+        jump B1
+    
+    "Ikuti saran Atma tergantung situasinya":
+        jump B2
+
+label B1:
+    $ B1 = True
+    show atma happy
+    atma "Nah gitu dong." 
+    
+    jump school2
+
+label B2:
+    show atma sad
+    atma "Oke. Rasain sendiri resikonya."
+    
+    jump school2
+
+
+label school2:
+    "Kring!!!"
+
+    show angga
+    show atma at right
+    "..."
+
+    scene black
+    with fade
+
+    show bg classroom
+    with fade
+    "..."
 
     return
