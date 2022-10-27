@@ -6,6 +6,8 @@ define loka = Character("Loka", color="00ff00")
 
 default A1 = False
 default B1 = False
+default C1 = False
+default D1 = False
 
 # The game starts here.
 
@@ -98,7 +100,7 @@ label start:
     show loka
     loka "Lu mah kebiasaan."
 
-menu:
+menu A:
     "Ajak Loka bolos.":
         jump A1
     
@@ -225,7 +227,7 @@ label sekolah:
     atma "Lu tanya ke gua. Gua bisa kasih saran ke lu."
     atma "Gak kaya Loka & guru biologi yang sering kasih tau lu, habis itu ninggalin lu. Gua bakal tetep temenin lu. Apapun masalahnya. Di mana pun."
 
-menu:
+menu B:
     "Selalu dengarkan saran Atma":
         jump B1
     
@@ -234,30 +236,262 @@ menu:
 
 label B1:
     $ B1 = True
+
+    hide atma
+    show angga
+    angga "Iya iya. Gw bakal dengerin lu kok."
+    hide angga
+    
     show atma happy
-    atma "Nah gitu dong." 
+    atma "Nah gitu dong. Gw kan temenin lu ke mana-mana" 
+    hide atma
     
     jump school2
 
 label B2:
+    show angga
+    angga "Ya tergantung situasinya. Gw ikut saran yang beneran dukung gw."
+    hide angga
+
     show atma sad
-    atma "Oke. Rasain sendiri resikonya."
+    atma "Oke. Rasain sendiri resikonya. Jangan bawa-bawa gw kalo sarannya bukan dari gw."
+    hide atma
     
     jump school2
 
 
 label school2:
-    "Kring!!!"
-
+    
     show angga
     show atma at right
-    "..."
+    "Kring!!!"
 
     scene black
     with fade
 
     show bg classroom
     with fade
+    "..."
+    show angga
+    with moveinleft
+    "..."
+    hide angga
+
+    show bg classroomfull
+    with dissolve
+    "2 jam kemudian ..."
+
+    show bg classroom
+    with fade
+    "Kring!!!"
+
+    if A1:
+        show angga
+        angga "Jadinya kita mau pergi kemana?"
+        hide angga
+
+        show atma
+        atma "Yang penting kita ke depan dulu. Ayo!"
+        hide atma
+
+    else:
+        show atma
+        atma "Ayo buruan pergi! Si Loka ke sini. Gw yakin bakal ceramahin lu."
+        hide atma
+
+        if B1:
+            show angga
+            angga "Iya iya, sabar. Beresin tas dulu."
+            hide angga
+
+            show atma
+            atma "Udah? Ayo."
+            hide atma
+
+            show angga
+            angga "Gas."
+            hide angga
+            
+        else:
+            show angga
+            angga "Si Loka doang mah gpp. Takut banget lu."
+            hide angga
+
+            show atma
+            atma "Hih. Ngeyel banget sih lu."
+            hide atma
+
+            show angga
+            show loka at right
+            with dissolve
+            loka "Yo Angga! Ke perpus yuk. Tugas lu belum kan? Gua bantuin."
+    
+    if A1 or B1:
+        show angga
+        with moveinleft
+        show loka at right
+        with zoomin
+        loka "Hayo... Mau kemana lu?"
+        angga "Hehe."
+        loka "Lu mau bolos ya?"
+        
+    loka "Udah, ayo ke perpus! Kelarin tugas lu. Gw gak mau kena marah."
+    angga "Eeeh..."
+    hide loka
+    with moveoutright
+    hide angga
+    with moveoutright
+    angga "Kenapa gw diseret-seret?"
+
+    scene bg school
+    with dissolve
+
+    show angga
+    show loka at right
+    show atma at left
+    atma "Sstt.. Angga. Lu beneran mau ke perpus?"
+    atma "Gw kasih tau sesuatu. Tapi jangan kedengeran Loka."
+
+menu C:
+    "Ikut Loka ke perpus?":
+        jump C1
+
+    "Ke toilet dulu. Dengarkan Atma.":
+        jump C2
+
+
+label C1:
+    if C1:
+        scene bg toilet
+        show angga
+        show atma at left
+    
+    $ C1 = True
+
+    angga "Gw mau ke perpus. Tapi gw mau kantin dulu."
+    show atma angry
+    atma "Ngapain sih? Emang lu masih ada waktu?"
+    atma "Pokoknya gw mau ke depan sekolah. Kalo lu nanti gak dateng, gw gak bakal temenin lu lagi."
+    atma "Awas aja lu kalo sampe gak dateng!"
+    hide atma
+    with moveoutleft
+
+    jump canteen    
+
+label C2:
+    angga "Bentar Lok. Gw kebelet kencing."
+    show loka angry
+    loka "Jangan banyak alesan."
+    angga "Sumpah Lok. Kalo gak percaya gua kencingin lu mau?"
+    loka "Yaudah. Gw tungguin di depan pintu. Biar lu gak kabur."
+    hide angga
+    hide atma
+    hide loka
+
+    scene bg toilet
+    with fade
+    
+    show angga
+    angga "Atma, jadi gimana?"
+    hide angga
+
+    show atma
+    atma "Tenang. Lu ngumpet di belakang orang gendut ini. Trus kabur."
+    atma "Atau gak. Kalo lu males ngedepin Loka & guru biologi, lu kasih aja si Loka duit biar diem."
+
+menu D:
+    "Kabur":
+        $ D1 = True
+        jump D1
+
+    "Nego ke Loka":
+        jump D2
+
+    "Ikut Loka ke perpus":
+        $ C1 = True
+        jump C1
+        
+
+label D1:
+    if D1:
+        scene bg school
+        with fade
+
+    show angga at right
+    with moveinleft
+    angga "Sorry ya Lok! Salam buat pak biologi. Hehe."
+    hide angga
+    with moveoutright
+
+    show loka
+    loka "Sial. Kegocek gw."
+    hide loka
+
+    jump road
+
+label D2:
+    scene bg school
+    with fade
+    
+    show angga
+    angga "Gini aja, Lok. Biar kita sama-sama seneng. Gw kasih lu duit. Tapi lu bilang sama guru biologi gw lagi di UKS. Oke?"
+    hide angga
+
+    show loka
+    loka "Hmm. Kan! Mulai lagi ni anak."
+    hide loka
+    
+    show angga
+    angga "Ayolah, Lok."
+    hide angga
+
+    show loka
+    loka "Tanggung jawab sendiri lah, Ngga. Mau sampe kapan lu kaya gini."
+    hide loka
+
+    show angga
+    angga "Gw bukan mau denger ceramah lu. Jadi, mau gak?"
+    hide angga
+
+    show loka
+    loka "Hmm. 1 miliyar. Bisa?"
+    hide loka
+
+    show angga
+    angga "Lu mah gitu. Si paling harga diri. "
+    angga "Terpaksa, rencana B."
+    hide angga
+
+    show loka
+    loka "Rencana B?"
+    hide loka
+
+    jump D1
+
+label canteen:
+    scene bg school
+    with fade
+
+    show angga
+    angga "Ke kantin dulu yuk, Lok! Laper nih. Gw traktir."
+    hide angga
+
+    show loka
+    loka "Hmm. Ada maunya nih."
+    hide loka
+
+    show angga
+    angga "Kali ini gak ada maksud apa-apa, sumpah."
+    hide angga
+
+    show loka
+    loka "Okelah. Pokoknya harus cepet. Kalo sampe ada siasat, gw aduin lu."
+    hide loka
+
+label road:
+    scene bg road
+    with fade
+    
     "..."
 
     return
