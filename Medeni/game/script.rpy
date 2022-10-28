@@ -2,12 +2,14 @@
 
 define angga = Character("Angga", color="#ff0000")
 define atma = Character("Atma", color="#0000ff")
-define loka = Character("Loka", color="00ff00")
+define loka = Character("Loka", color="#00ff00")
+define buyudi = Character("Bu Wahyudiyawati", color="#fff")
 
 default A1 = False
 default B1 = False
 default C1 = False
 default D1 = False
+default E1 = False
 
 # The game starts here.
 
@@ -65,7 +67,7 @@ label start:
     hide angga
 
     show atma angry
-    atma "Jujur aja gw gedek sama itu guru biologi. Dikit-dikit tugas. Suruh ini. Suruh itu. Kek babu."
+    atma "Jujur aja gw gedek sama itu Bu Wahyudiyawati guru biologi. Dikit-dikit tugas. Suruh ini. Suruh itu. Kek babu."
     hide atma
 
     show atma
@@ -225,7 +227,7 @@ label sekolah:
     show atma
     atma "Ya lu dengerin gua dong."
     atma "Lu tanya ke gua. Gua bisa kasih saran ke lu."
-    atma "Gak kaya Loka & guru biologi yang sering kasih tau lu, habis itu ninggalin lu. Gua bakal tetep temenin lu. Apapun masalahnya. Di mana pun."
+    atma "Gak kaya Loka & Bu Wahyudiyawati yang sering kasih tau lu, habis itu ninggalin lu. Gua bakal tetep temenin lu. Apapun masalahnya. Di mana pun."
 
 menu B:
     "Selalu dengarkan saran Atma":
@@ -397,7 +399,7 @@ label C2:
 
     show atma
     atma "Tenang. Lu ngumpet di belakang orang gendut ini. Trus kabur."
-    atma "Atau gak. Kalo lu males ngedepin Loka & guru biologi, lu kasih aja si Loka duit biar diem."
+    atma "Atau gak. Kalo lu males ngedepin Loka & Bu Wahyudiyawati, lu kasih aja si Loka duit biar diem."
 
 menu D:
     "Kabur":
@@ -417,9 +419,11 @@ label D1:
         scene bg school
         with fade
 
+    $ D1 = True
+
     show angga at right
     with moveinleft
-    angga "Sorry ya Lok! Salam buat pak biologi. Hehe."
+    angga "Sorry ya Lok! Salam buat Bu Wahyudiyawati. Hehe."
     hide angga
     with moveoutright
 
@@ -434,7 +438,7 @@ label D2:
     with fade
     
     show angga
-    angga "Gini aja, Lok. Biar kita sama-sama seneng. Gw kasih lu duit. Tapi lu bilang sama guru biologi gw lagi di UKS. Oke?"
+    angga "Gini aja, Lok. Biar kita sama-sama seneng. Gw kasih lu duit. Tapi lu bilang sama Bu Wahyudiyawati gw lagi di UKS. Oke?"
     hide angga
 
     show loka
@@ -488,10 +492,215 @@ label canteen:
     loka "Okelah. Pokoknya harus cepet. Kalo sampe ada siasat, gw aduin lu."
     hide loka
 
+    scene bg canteen
+    with fade
+
+    show loka
+    loka "Pokoknya nanti lu buka dulu Wikipedia trus cari daftar-daftarnya."
+    hide loka
+
+    show angga
+    angga "..."
+    hide angga
+
+    show loka
+    loka "Paham?"
+    hide loka
+
+    show angga
+    angga "..."
+    hide angga
+
+    show loka
+    loka "Lu dengerin gua gak sih? Dari tadi nengok jam terus. Ada apa sih?"
+    hide loka
+
+    show angga
+    angga "Sebenernya gw lagi ditungguin Atma di luar. Gimana dong?"
+    hide angga
+
+    show loka
+    loka "Hmm."
+    loka "Gini. Gw bakal selalu ingetin lu buat mandiri & tanggung jawab sendiri sama diri lu. Keputusan lu harus lu sendiri yang buat."
+    loka "Jadi sekarang gimana keputusan lu?"
+
+    menu E:
+        "Temui Atma. Obrolin saran Loka.":
+            hide loka
+            jump E1
+        "Pergi ke perpustakaan bersama Loka":
+            hide loka
+            jump E2
+        
+
 label road:
     scene bg road
     with fade
     
-    "..."
+    show angga
+    angga "Inpo."
+    hide angga
 
+    show loka
+    loka "Ke warung depan yuk!"
+    hide loka
+
+    show angga
+    angga "Gas."
+    hide angga
+
+    jump school3
+
+label E1:
+    show angga
+    angga "Oke. Makasih saran lu, Lok. Gw bakal obrolin dulu."
+    angga "Kali ini beneran. Gw bakal berubah."
+    hide angga
+
+    show loka
+    loka "Nah. Gitu dong."
+    loka "Buat sekarang yang terpenting lu konsisten dulu."
+    hide loka
+
+    show angga
+    angga "Oke. Kalo gitu gw ke depan dulu ya. Tenang gw gak kabur."
+    hide angga
+    with moveoutright
+
+    show loka
+    loka "Hmm. Keyakinan gw masih 50/50. Tapi yaudah lah."
+    hide loka
+
+    scene bg road
+    with fade
+
+    show angga
+    angga "Yo Atma!"
+    hide angga
+    
+    show atma
+    atma "Gas yuk sekarang!"
+    hide atma
+
+    show angga
+    angga "Bentar! Gw mau ngomong bentar."
+    angga "Kayaknya gw gak dulu deh. Gw mau ngurang-ngurangin masalah gw."
+    hide angga
+
+    show atma angry
+    atma "Ngapain! Masalah lama kelamaan juga ilang. Mending ngabisin waktu sama gw daripada murung tiap hari ngadepin masalah."
+    hide atma
+
+    show angga
+    angga "Pokoknya gw mau coba dulu sesekali."
+    hide angga
+
+    show atma
+    atma "Ujung-ujungnya lu bakal nyesel, yakin deh sama gw."
+    hide atma
+
+    show angga
+    angga "Gw emang gak ngeraguin lu. Tapi kali ini gw mau bikin keputusan sendiri. Kalo lu beneran temen gw, lu harusnya dukung gw."
+    hide angga
+    with moveoutright
+    angga "Bye."
+
+    jump school3
+
+label E2:
+    show angga
+    angga "Oke. Makasih saran lu, Lok. Kali ini beneran. Gw bakal berubah."
+    hide angga
+
+    show loka
+    loka "Nah. Gitu dong."
+    loka "Buat sekarang yang terpenting lu konsisten dulu."
+    hide loka
+
+    show angga
+    angga "Oke."
+    hide angga
+
+    show loka
+    loka "Yuk ke perpus!"
+    hide loka
+
+    show angga
+    angga "Ayo."
+    hide angga
+
+label school3:
+    if D1:
+        scene black
+        with fade
+        "Kelas dimulai."
+
+        scene bg classroomfull
+        with fade
+
+        show buyudi
+        buyudi "Ada yang tau kemana Angga?"
+        buyudi "Loka, ke mana si Angga?"
+        hide buyudi
+
+        show loka
+        loka "Dia kabur bu. Belum ngerjain tugas."
+        hide loka
+
+        show buyudi angry
+        buyudi "Kenapa kamu biarin! Kasih tau dong!"
+        hide buyudi
+
+        show loka
+        loka "Sudah bu. Sudah saya kasih tau."
+        hide loka
+
+        show buyudi angry
+        buyudi "Arghh!"
+        hide buyudi
+
+        scene black
+        with fade
+
+        "Kelas biologi berakhir"
+    
+    else:
+        scene black
+        with fade
+        "Loka dan Angga menyelesaikan tugas. Setelah itu kelas dimulai."
+
+        scene bg classroomfull
+        with fade
+
+        show buyudi
+        buyudi "Kerjaanmu bagus Angga. Buat sendiri apa nyontek?"
+        hide buyudi
+
+        show angga sad
+        angga "Sendiri Bu."
+        hide angga
+
+        show loka
+        loka "Angga ngerjain sendiri kok, Bu. Tadi sama saya di perpus."
+        hide loka
+
+        show buyudi
+        buyudi "Akhirnya! Kamu mulai niat sekolah ya Angga."
+        buyudi "Tingkatkan! Selalu kasih arahan ya, Lok."
+        hide buyudi
+
+        show loka
+        loka "Siap bu."
+        loka "Angga, tanggepin dong."
+        hide loka
+
+        show angga sad
+        angga "Iya Bu... Siap."
+        hide angga
+
+        scene black
+        with fade
+
+        "Kelas biologi berakhir"
+        
     return
