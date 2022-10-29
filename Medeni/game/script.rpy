@@ -629,6 +629,8 @@ label E2:
     angga "Ayo."
     hide angga
 
+    jump school3
+
 label school3:
     if D1:
         scene black
@@ -662,8 +664,43 @@ label school3:
         scene black
         with fade
 
-        "Kelas biologi berakhir"
-    
+        "Kelas biologi berakhir."
+
+        scene bg classroom
+        with fade
+
+        show angga
+        with moveinright
+        angga "Hehe. Sorry ya, Lok."
+        hide angga
+
+        show loka angry
+        loka "Capek gw, Ngga."
+        hide loka
+
+        show angga
+        angga "Jangan marah gitu dong, Lok. Ntar pulang sekolah gw traktir di intimart deh."
+        hide angga
+
+        show loka angry
+        loka "Gw bingung. Sebenernya apa sih yang lu cari?"
+        hide loka
+
+        show angga
+        angga "Ya nikmatin hari-hari. Bareng si Atma."
+        hide angga
+
+        show loka angry
+        loka "Maksud lu sendirian?"
+        hide loka
+        show loka
+        loka "Eh.."
+        hide loka
+
+        show angga
+        angga "Sendirian?"
+        hide angga
+        
     else:
         scene black
         with fade
@@ -701,6 +738,70 @@ label school3:
         scene black
         with fade
 
-        "Kelas biologi berakhir"
-        
+        "Kelas biologi berakhir."
+
+        scene bg classroom
+        with fade
+
+        show loka
+        loka "Yo Angga! Kenapa lu? Dipuji-puji malah murung."
+        hide loka
+
+        show angga
+        angga "Gw juga bingung. Gw ngerasa kosong."
+        hide angga
+
+        show loka
+        loka "Emang apa sih yang lu cari?"
+        hide loka
+
+        show angga
+        angga "Kayaknya gw perlu ngajak Atma deh. Gw gak bisa nikmatin hasilnya sendirian."
+        hide angga
+    
+    jump ending
+
+
+label ending:
+    show loka
+    loka "Hmm. Gimana ya ngomongnya. Gini..."
+    loka "Sebenernya gw pingin ngomong ini dari lama."
+    loka "Atma itu siapa?"
+    hide loka
+
+    show angga
+    angga "Temen gw. Tadi pagi kita berangkat bareng. Masa lu sadar sih."
+    hide angga
+
+    show loka
+    loka "Hmm. Gini deh. Lu bisa gak jelasin latar belakang dia?"
+    hide loka
+
+    show angga
+    angga "Atma itu orang yang..."
+    angga "yang... hmm...."
+    hide angga
+
+    show loka
+    loka "Gini, Ngga. Lu tau gak kalo Atma itu gak ada?"
+    hide loka
+
+    show angga
+    angga "..."
+    atma "Angga..."
+    hide angga
+
+    scene black
+    with fade
+    angga "Hmm."
+    
+    scene bg room
+    with fade
+
+    show atma
+    atma "Woy Angga! Buruan bangun!"
+    angga "Hmm."
+    atma "Matiin itu alarm! Berisik. Buruan siap-siap. Gw tunggu di depan."
+    angga "Hah."
+
     return
