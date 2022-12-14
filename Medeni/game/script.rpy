@@ -251,6 +251,7 @@ label B1:
     jump school2
 
 label B2:
+    hide atma
     show angga
     angga "Ya tergantung situasinya. Gw ikut saran yang beneran dukung gw."
     hide angga
@@ -541,9 +542,9 @@ label road:
     angga "Inpo."
     hide angga
 
-    show loka
+    show atma
     loka "Ke warung depan yuk!"
-    hide loka
+    hide atma
 
     show angga
     angga "Gas."
